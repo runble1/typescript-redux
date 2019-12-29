@@ -8,21 +8,17 @@ export default function Todo() {
   const dispatch = useDispatch();
   const todos = useSelector<any, Array<string>>(state => state.todos);
 
-  const addTodoOnPress = () => {
-    if (todo === "") {
-      return;
+  const addTodoOnPress = title => {
+    if (title === "") {
     }
-
-    dispatch(addTodo(todo));
+    dispatch(addTodo(title));
 
     setTodo("");
   };
 
   return (
     <View style={styles.container}>
-      <Text>TODO 入力</Text>
-      <TextInput value={todo} onChangeText={t => setTodo(t)}></TextInput>
-      <Button title="保存" onPress={addTodoOnPress} />
+      <Button title="タイトル" onPress={() => addTodoOnPress("aaa")} />
       {todos.map((t, i) => (
         <View key={i}>
           <Text>{t}</Text>
@@ -38,5 +34,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center"
+  },
+  button: {
+    margin: 10
   }
 });
