@@ -18,7 +18,8 @@ export default function Todo() {
 
   return (
     <View style={styles.container}>
-      <Button title="タイトル" onPress={() => addTodoOnPress("aaa")} />
+      <Button title="タイトル1" onPress={() => addTodoOnPress("タイトル1")} />
+      <Button title="タイトル2" onPress={() => addTodoOnPress("タイトル2")} />
       {todos.map((t, i) => (
         <View key={i}>
           <Text>{t}</Text>
