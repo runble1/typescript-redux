@@ -1,29 +1,27 @@
 import { createStore } from "redux";
 
 // actions
-const ADD_TODO_ACTION = "ADD_TODO";
+const SET_QUESTION_ACTION = "SET_QUESTION";
 
 // action creaters
-export function addTodo(todo: string) {
+export function setQuestion(question: string) {
   return {
-    type: ADD_TODO_ACTION,
-    payload: {
-      todo
-    }
+    type: SET_QUESTION_ACTION,
+    question: question
   };
 }
 
 // init state
 const initState = {
-  todos: []
+  question: ""
 };
 
 // reducer
-export const todoReducer = (state = initState, action) => {
+export const questionReducer = (state = initState, action) => {
   switch (action.type) {
-    case ADD_TODO_ACTION:
+    case SET_QUESTION_ACTION:
       return {
-        todos: [...state.todos, action.payload.todo]
+        question: action.question
       };
     default:
       return state;
@@ -31,4 +29,4 @@ export const todoReducer = (state = initState, action) => {
 };
 
 // store
-export const store = createStore(todoReducer);
+export const store = createStore(questionReducer);

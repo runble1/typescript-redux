@@ -1,30 +1,30 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo } from "./../src/store";
+import { setQuestion } from "./../src/store";
 
 export default function Todo() {
-  const [todo, setTodo] = useState("");
+  //const [question, setQuestion] = useState("");
   const dispatch = useDispatch();
-  const todos = useSelector<any, Array<string>>(state => state.todos);
+  const target = useSelector<any, String>(state => state.question);
 
-  const addTodoOnPress = title => {
-    if (title === "") {
+  const setQuestionOnPress = question => {
+    if (question === "") {
     }
-    dispatch(addTodo(title));
-
-    setTodo("");
+    dispatch(setQuestion(question));
   };
 
   return (
     <View style={styles.container}>
-      <Button title="タイトル1" onPress={() => addTodoOnPress("タイトル1")} />
-      <Button title="タイトル2" onPress={() => addTodoOnPress("タイトル2")} />
-      {todos.map((t, i) => (
-        <View key={i}>
-          <Text>{t}</Text>
-        </View>
-      ))}
+      <Button
+        title="タイトル1"
+        onPress={() => setQuestionOnPress("タイトル1")}
+      />
+      <Button
+        title="タイトル2"
+        onPress={() => setQuestionOnPress("タイトル2")}
+      />
+      <Text>{target}</Text>
     </View>
   );
 }
